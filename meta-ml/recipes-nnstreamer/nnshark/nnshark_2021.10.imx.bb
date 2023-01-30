@@ -25,8 +25,10 @@ EXTRA_OECONF = " \
         --disable-graphviz \
         --disable-gtk-doc \
 "
+do_configure[network] = "1"
 
 do_configure:prepend() {
+    git submodule set-url common https://gitlab.freedesktop.org/gstreamer/common.git
     sh autogen.sh --noconfigure
 }
 
